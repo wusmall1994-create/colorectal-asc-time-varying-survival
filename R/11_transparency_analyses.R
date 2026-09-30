@@ -112,12 +112,12 @@ plot_stage('outputs/final/FigureS2_stage_conditional_OS.png','png'); plot_stage(
 plot_smooth <- function(file,type='png') {
   if(type=='png') png(file,1800,1250,res=240) else if(type=='tiff') tiff(file,1800,1250,res=240,compression='lzw') else svg(file,7.5,5.2)
   par(mar=c(4.4,4.7,1.2,1.2),las=1,mgp=c(2.7,.7,0),tcl=-.25,family='sans')
-  plot(NA,xlim=c(0,60),ylim=c(.35,2.8),log='y',xlab='Months since diagnosis',ylab='Smoothed ASC-to-NOS mortality hazard ratio',yaxt='n',bty='l')
+  plot(NA,xlim=c(0,60),ylim=c(.35,2.8),log='y',xlab='Months since diagnosis',ylab='Exploratory smoothed coefficient\n(hazard-ratio scale)',yaxt='n',bty='l')
   axis(2,at=c(.5,.75,1,1.5,2,2.5),labels=c('.5','.75','1','1.5','2','2.5')); abline(h=1,lty=2,col='#666666')
   cc<-c(OS='#0072B2',CSS='#D55E00')
   for(o in c('OS','CSS')){q<-smooth[outcome==o]; polygon(c(q$time,rev(q$time)),c(q$lower95,rev(q$upper95)),border=NA,col=adjustcolor(cc[o],alpha.f=.14));lines(q$time,q$HR,col=cc[o],lwd=2)}
   legend('topright',c('All-cause mortality','Cancer-specific mortality'),col=cc,lwd=2,bty='n',cex=.85)
-  mtext('Exploratory scaled-Schoenfeld-residual smooth; not a change-point estimate',side=3,adj=0,cex=.8,col='#555555')
+  mtext('Scaled Schoenfeld residual diagnostic; not a directly fitted continuous-time HR',side=3,adj=0,cex=.76,col='#555555')
   dev.off()
 }
 plot_smooth('outputs/final/FigureS3_smooth_time_varying_histology.png','png'); plot_smooth('outputs/final/FigureS3_smooth_time_varying_histology.tiff','tiff'); plot_smooth('outputs/final/FigureS3_smooth_time_varying_histology.svg','svg')
