@@ -1,0 +1,25 @@
+# SEER data and all patient-level or generated objects
+data/
+work/
+outputs/
+*.rds
+*.RData
+*.csv
+*.tsv
+*.txt
+*.gz
+*.zip
+
+# Manuscripts and rendered documents
+*.docx
+*.pdf
+*.png
+*.tiff
+*.svg
+
+# Local configuration and editor files
+.env
+.Rhistory
+.Rproj.user/
+.vscode/
+.idea/
